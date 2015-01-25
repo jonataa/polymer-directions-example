@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Polymer Google Maps Directions</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="components.html">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body unresolved>
+
+  <template is="auto-binding">
+    <div id="inputs">
+      <core-field>
+        <core-icon icon="icons:search"></core-icon>
+        <input placeholder="Start address" value="{{startAddress}}">
+      </core-field>
+      <core-field>
+        <core-icon icon="icons:search"></core-icon>
+        <input placeholder="End address" value="{{endAddress}}">
+      </core-field>
+
+      <core-selector selected="0" selectedItem="{{travelMode}}" layout horizontal>
+        <core-item icon="maps:directions-car" label="DRIVING"></core-item>
+        <core-item icon="maps:directions-walk" label="WALKING"></core-item>
+        <core-item icon="maps:directions-bike" label="BICYCLING"></core-item>
+        <core-item icon="maps:directions-transit" label="TRANSIT"></core-item>
+      </core-selector>
+
+    </div>
+
+    <google-map map="{{map}}"></google-map>
+    <google-map-directions map="{{map}}" startAddress="{{startAddress}}"
+                           endAddress="{{endAddress}}"
+                           travelMode="{{travelMode.label}}">
+    </google-map-directions>
+  </template>
+  <script src="main.js"></script>
+</body>
+</html>
